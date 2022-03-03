@@ -1,33 +1,53 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+#################
+## Misc
+#################
+nbproject
+manifest.mf
+build.xml
+node_modules
+node_modules/*
+npm-debug.log
+yarn-error.log
+src/**/*.{js,jsx}
+tests/**/*.{js,jsx}
+/index.js
+/react-jhipster.{js,jsx}
+config/testing-utils.js
+*.map
+*.d.ts
+!make.js
+!examples/**/*.{js,jsx}
+coverage
+**/*.metadata.json
+*.metadata.json
+/bundles
+/lib/tests
+build/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
+#################
+## IDE
+#################
+.idea
 .project
 .settings
-.springBeans
-.sts4-cache
+.vscode
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
+############
+## Windows
+############
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+# Windows image file caches
+Thumbs.db
 
-### VS Code ###
-.vscode/
+# Folder config file
+Desktop.ini
+
+############
+## Mac
+############
+
+# Mac crap
+.DS_Store
+**/.DS_Store
+
+build/test-results/karma/
