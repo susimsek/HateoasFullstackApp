@@ -1,0 +1,65 @@
+server:
+  forward-headers-strategy: framework
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        max-page-size: 100
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      javax:
+        persistence:
+          validation:
+            mode: none
+  hateoas:
+    use-hal-as-default-json-media-type: true
+  jackson:
+    default-property-inclusion: non_null
+  h2:
+    console:
+      enabled: true
+
+springdoc:
+  swagger-ui:
+    display-request-duration: true
+    operations-sorter: alpha
+    tagsSorter: alpha
+    disable-swagger-default-url: true
+    use-root-path: true
+
+
+api-docs:
+  title:  Capability Api Documentation
+  description: Api Documentation for Capability Api
+  license-url: http://springdoc.org
+  version: 1.0
+  terms-of-service-url: http://swagger.io/terms/
+  license: Apache 2.0
+
+cors:
+  allowed-origins: http://localhost:3000
+  allowed-methods: GET,PUT,POST,PATCH,DELETE,OPTIONS
+  allowed-headers: '*'
+  allow-credentials: true
+  max-age: 3600
