@@ -34,6 +34,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api")
 @Tag(name = "capability", description = "the Capability API")
 public class CapabilityController {
 
