@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efce9f61-ec58-4a11-8f00-217dfe219c2f" name="Changes" comment="added heroku config file" />
+    <list default="true" id="efce9f61-ec58-4a11-8f00-217dfe219c2f" name="Changes" comment="added heroku config file">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hateoas-backend.iml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="backend" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -130,6 +133,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="start (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/hateoas-frontend/package.json" />
       <command value="run" />
@@ -142,6 +155,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.start (1)" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.start" />
@@ -177,7 +191,8 @@
       <workItem from="1646326260561" duration="361000" />
       <workItem from="1646326626426" duration="518000" />
       <workItem from="1646327162947" duration="2875000" />
-      <workItem from="1646330388702" duration="3419000" />
+      <workItem from="1646330388702" duration="3691000" />
+      <workItem from="1646334212569" duration="30000" />
     </task>
     <task id="LOCAL-00001" summary="changed gitignore">
       <created>1646326737288</created>
@@ -228,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646333727060</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added heroku config file">
+      <created>1646334174565</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1646334174565</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
