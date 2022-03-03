@@ -37,7 +37,9 @@ export const getAllCapabilitiesHandler = (getLink) => async dispatch => {
             type: GET_CAPABILITIES,
             payload: [],
             links: {},
-            page: {}
+            page: {
+                totalPages: 0
+            }
         });
     }
 }
