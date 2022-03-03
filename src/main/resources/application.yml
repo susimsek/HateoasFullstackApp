@@ -58,7 +58,7 @@ api-docs:
   license: Apache 2.0
 
 cors:
-  allowed-origins: http://localhost:3000
+  allowed-origins: http://localhost:3000, https://hateoas-fullstack-ui.herokuapp.com
   allowed-methods: GET,PUT,POST,PATCH,DELETE,OPTIONS
   allowed-headers: '*'
   allow-credentials: true
