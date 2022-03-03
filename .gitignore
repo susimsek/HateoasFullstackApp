@@ -31,3 +31,16 @@ build/
 
 ### VS Code ###
 .vscode/
+
+############
+## Mac
+############
+
+# Mac crap
+.DS_Store
+**/.DS_Store
+
+build/test-results/karma/
+© 2022 GitHub, Inc.
+Terms
+Privacy
