@@ -23,6 +23,7 @@
         <jib-maven-plugin.version>3.2.0</jib-maven-plugin.version>
         <jib-maven-plugin.architecture>amd64</jib-maven-plugin.architecture>
         <jib.from.image>eclipse-temurin:17-jre-focal</jib.from.image>
+        <heroku.image.name>registry.heroku.com/hateoas-fullstack-api/web</heroku.image.name>
     </properties>
 
     <dependencies>
@@ -244,7 +245,7 @@
                                 </platforms>
                             </from>
                             <to>
-                                <image>registry.heroku.com/hateoas-fullstack-api/web</image>
+                                <image>${heroku.image.name}</image>
                             </to>
                             <container>
                                 <jvmFlags>
@@ -285,7 +286,7 @@
                             </excludes>
                             <image>
                                 <builder>paketobuildpacks/builder:tiny</builder>
-                                <name>registry.heroku.com/hateoas-fullstack-api/web</name>
+                                <name>${heroku.image.name}</name>
                                 <env>
                                     <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
                                     <BP_BINARY_COMPRESSION_METHOD>upx</BP_BINARY_COMPRESSION_METHOD>
