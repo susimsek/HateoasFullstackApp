@@ -24,12 +24,11 @@ coverage
 /lib/tests
 build/
 
-#################
-## IDE
-#################
+### IntelliJ IDEA ###
 .idea
-.project
-.settings
+*.iws
+*.iml
+*.ipr
 .vscode
 
 ############
@@ -41,6 +40,10 @@ Thumbs.db
 
 # Folder config file
 Desktop.ini
+
+############
+## Mac
+############
 
 ############
 ## Mac
