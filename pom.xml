@@ -187,8 +187,10 @@
                             </excludes>
                             <image>
                                 <builder>paketobuildpacks/builder:tiny</builder>
+                                <name>docker.io/suayb/hateoas-fullstack-api:latest</name>
                                 <env>
                                     <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
+                                    <BP_BINARY_COMPRESSION_METHOD>upx</BP_BINARY_COMPRESSION_METHOD>
                                     <BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
                                         -H:+ReportExceptionStackTraces --enable-https
                                         --enable-http
