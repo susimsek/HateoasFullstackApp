@@ -1,5 +1,6 @@
 server:
   forward-headers-strategy: framework
+  port: ${PORT:8080}
 
 management:
   endpoint:
@@ -32,6 +33,7 @@ spring:
         persistence:
           validation:
             mode: none
+    open-in-view: false
   hateoas:
     use-hal-as-default-json-media-type: true
   jackson:
@@ -58,7 +60,7 @@ api-docs:
   license: Apache 2.0
 
 cors:
-  allowed-origins: http://localhost:3000
+  allowed-origins: http://localhost:3000, https://hateoas-fullstack-ui.herokuapp.com
   allowed-methods: GET,PUT,POST,PATCH,DELETE,OPTIONS
   allowed-headers: '*'
   allow-credentials: true
