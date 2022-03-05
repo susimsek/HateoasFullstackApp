@@ -68,7 +68,7 @@ npm start
 
 # Sonar
 
-You can also testing code quality locally by typing the following command
+You can also test code quality locally via sonarqube by typing the following command
 
 ```sh
 mvn -Psonar initialize sonar:sonar
