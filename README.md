@@ -42,6 +42,12 @@ You can run the spring boot app by typing the following command
 mvn spring-boot:run
 ```
 
+You can build native the spring boot app by typing the following command
+
+```sh
+mvn -Pnative -DskipTests package
+```
+
 ## Prerequisites for Frontend
 
 * Nodejs 14+
