@@ -27,7 +27,6 @@ docker-compose.*.yml
 
 # Exclude vagrant files.
 .vagrant
-vagrant
 
 ######################
 # Mac OSX

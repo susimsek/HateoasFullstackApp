@@ -18,7 +18,6 @@ build/
 
 # Exclude vagrant files.
 .vagrant
-vagrant
 
 ######################
 # Mac OSX
