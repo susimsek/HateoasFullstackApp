@@ -31,7 +31,7 @@ Before you can build this project, you must install and configure the following 
 ## Prerequisites for Backend
 
 * Java 17
-* GraalVM CE 22(For Native Image)
+* GraalVM CE 22(only required for native image build)
 * Maven 3.x
 
 ## Prerequisites for Frontend
