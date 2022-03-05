@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  api:
+    image: suayb/hateoas-fullstack-api:1.0.0
+    restart: unless-stopped
+    container_name: api
+    networks:
+      - test
+    environment:
+      - PORT=8080
+      - CORS_ALLOWED_ORIGINS=http://localhost:3000, https://hateoas-fullstack-ui.herokuapp.com
+    ports:
+      - '8080:8080'
+
+  web:
+    image: suayb/hateoas-fullstack-ui:1.0.0
+    restart: unless-stopped
+    container_name: ui
+    networks:
+      - test
+    environment:
+      - PORT=3000
+    ports:
+      - '3000:3000'
+
+networks:
+  test:
+    name: hateoas_test
