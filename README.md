@@ -66,6 +66,14 @@ You can run the react app(accessible on http://localhost:3000) by typing the fol
 npm start
 ```
 
+# Sonar
+
+You can also testing code quality locally by typing the following command
+
+```sh
+mvn -Psonar initialize sonar:sonar
+```
+
 # Docker
 
 You can also fully dockerize your application and all the services that it depends on. To achieve this, first build a docker image of your app.
