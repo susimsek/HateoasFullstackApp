@@ -56,7 +56,6 @@ out/
 
 # Exclude vagrant files.
 .vagrant
-vagrant
 
 ######################
 # Maven
