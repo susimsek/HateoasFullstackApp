@@ -96,6 +96,14 @@ The docker image of ui can be built as follows:
 docker build -t web .
 ```
 
+# Run with Docker Compose
+
+You can start a hateoas fullstack app (accessible on http://localhost:3000) with
+
+```sh
+docker-compose -f deploy/docker/docker-compose.yaml up -d
+```
+
 # Used Technologies
 
 * Java 17
