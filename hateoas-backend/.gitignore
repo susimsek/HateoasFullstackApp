@@ -54,6 +54,9 @@ out/
 !.vscode/extensions.json
 *.code-workspace
 
+# Exclude vagrant files.
+.vagrant
+
 ######################
 # Maven
 ######################
