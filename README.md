@@ -74,7 +74,7 @@ You can also test code quality locally via sonarqube by typing the following com
 mvn -Psonar initialize sonar:sonar
 ```
 
-Once the analysis completes, it will be available on the Sonar dashboard, which by default is available on http://127.0.0.1:9000/.
+Once the analysis completes, it will be available on the Sonar dashboard, which by default is available on http://localhost:9000.
 
 # Docker
 
@@ -119,6 +119,7 @@ docker-compose -f deploy/docker/docker-compose.yaml up -d
 * Java 17
 * Docker
 * Heroku
+* Sonarqube
 * Spring Boot
 * Spring Hateoas
 * Spring Native
