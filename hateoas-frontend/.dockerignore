@@ -11,7 +11,9 @@ LICENSE
 /node/
 node_tmp/
 node_modules/
-npm-debug.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 /.awcache/*
 /.cache-loader/*
 build/
@@ -68,7 +70,3 @@ out/
 ######################
 /coverage/
 /.nyc_output/
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
