@@ -70,7 +70,7 @@ npm start
 
 ## Code Quality For Backend
 
-You can also test code quality locally via sonarqube by typing the following command
+You can test code quality locally via sonarqube by typing the following command
 
 ```sh
 mvn -Psonar initialize sonar:sonar
@@ -78,7 +78,7 @@ mvn -Psonar initialize sonar:sonar
 
 ## Code Quality For Frontend
 
-You can also test code quality locally via sonarqube by typing the following command
+You can test code quality locally via sonarqube by typing the following command
 
 ```sh
 sonar-scanner
