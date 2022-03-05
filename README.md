@@ -36,9 +36,13 @@ Before you can build this project, you must install and configure the following 
 
 * Nodejs 14+
 
-# Build Docker Image for Backend
+# Docker
 
-## Native Image Build
+You can also fully dockerize your application and all the services that it depends on. To achieve this, first build a docker image of your app.
+
+## Build Docker Image for Backend
+
+### Native Image Build
 
 The docker image of native application can be built as follows:
 
@@ -46,7 +50,7 @@ The docker image of native application can be built as follows:
 mvn -Pnative-image spring-boot:build-image
 ```
 
-## Image Build
+### Image Build
 
 The docker image of application can be built as follows:
 
@@ -54,7 +58,7 @@ The docker image of application can be built as follows:
 mvn -Pjib verify jib:dockerBuild
 ```
 
-# Build Docker Image for Frontend
+## Build Docker Image for Frontend
 
 The docker image of ui can be built as follows:
 
@@ -62,7 +66,7 @@ The docker image of ui can be built as follows:
 docker build -t web .
 ```
 
-## Used Technologies
+# Used Technologies
 
 * Java 17
 * Docker
