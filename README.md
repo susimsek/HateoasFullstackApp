@@ -60,7 +60,7 @@ You can install the dependencies by typing the following command
 npm install
 ```
 
-You can run the react app by typing the following command
+You can run the react app(accessible on http://localhost:3000) by typing the following command
 
 ```sh
 npm start
