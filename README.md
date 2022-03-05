@@ -12,7 +12,7 @@ If a consumer of a REST service needs to hard-code all the resource URLs, then i
 
 # Application
 
-The asset transfer application can be accessed from this link.  
+The Hateoas Fullstack application can be accessed from this link.  
 https://hateoas-fullstack-ui.herokuapp.com
 
 <img src="https://github.com/susimsek/HateoasFullstackApp/blob/main/images/ui.png" alt="Hateoas Fullstack App Dashboard" width="100%" height="100%"/>
@@ -34,9 +34,31 @@ Before you can build this project, you must install and configure the following 
 * GraalVM CE 22(only required for native image build)
 * Maven 3.x
 
+### Run the app
+
+You can run the spring boot app by typing the following command
+
+```sh
+mvn spring-boot:run
+```
+
 ## Prerequisites for Frontend
 
 * Nodejs 14+
+
+### Run the app
+
+You can install the dependencies by typing the following command
+
+```sh
+npm install
+```
+
+You can run the react app by typing the following command
+
+```sh
+npm start
+```
 
 # Docker
 
