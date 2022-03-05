@@ -22,13 +22,17 @@ https://hateoas-fullstack-api.herokuapp.com/swagger-ui.html
 
 <img src="https://github.com/susimsek/HateoasFullstackApp/blob/main/images/swagger.png" alt="Hateoas Fullstack App Swagger Ui" width="100%" height="100%"/>
 
-### Prerequisites for Backend
+# Development
+
+Before you can build this project, you must install and configure the following dependencies on your machine.
+
+## Prerequisites for Backend
 
 * Java 17
 * GraalVM CE 22(For Native Image)
 * Maven 3.x
 
-### Prerequisites for Frontend
+## Prerequisites for Frontend
 
 * Nodejs 14+
 
