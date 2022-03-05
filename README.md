@@ -96,7 +96,7 @@ The docker image of ui can be built as follows:
 docker build -t web .
 ```
 
-# Run with Docker Compose
+## Run with Docker Compose
 
 You can start a hateoas fullstack app (accessible on http://localhost:3000) with
 
