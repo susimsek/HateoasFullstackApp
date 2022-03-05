@@ -74,6 +74,8 @@ You can also testing code quality locally by typing the following command
 mvn -Psonar initialize sonar:sonar
 ```
 
+Once the analysis completes, it will be available on the Sonar dashboard, which by default is available on http://127.0.0.1:9000/.
+
 # Docker
 
 You can also fully dockerize your application and all the services that it depends on. To achieve this, first build a docker image of your app.
