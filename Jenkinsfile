@@ -39,6 +39,6 @@ node {
 
     def dockerImage
     stage('native build docker') {
-        sh "./mvnw -Pnative-image spring-boot:build-image"
+        sh "./mvnw -Pnative-image spring-boot:build-image -DskipTests"
     }
 }
