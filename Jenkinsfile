@@ -37,8 +37,8 @@ node {
         }
     }
 
-   /*  def dockerImage
+    def dockerImage
     stage('native build docker') {
-        sh ".mvn -Pnative-image spring-boot:build-image"
-    } */
+        sh "./mvnw -Pnative-image spring-boot:build-image"
+    }
 }
