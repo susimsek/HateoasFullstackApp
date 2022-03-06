@@ -45,5 +45,6 @@ pipeline {
         withSonarQubeEnv('sonar') {
           sh 'mvn -ntp -Psonar initialize sonar:sonar'
         }
-     }
+      }
+    }
 }
