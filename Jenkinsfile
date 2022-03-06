@@ -35,10 +35,9 @@ node {
                 sh "./mvnw -Psonar initialize sonar:sonar"
             }
         }
-    }
 
-    def dockerImage
-    stage('native build docker') {
-        sh "./mvnw -Pnative-image clean -DskipTests spring-boot:build-image"
+        stage('native build docker') {
+          sh "./mvnw -Pnative-image clean -DskipTests spring-boot:build-image"
+        }
     }
 }
