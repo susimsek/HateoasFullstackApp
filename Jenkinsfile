@@ -38,13 +38,15 @@ pipeline {
         }
        }
 
-       stage('packaging') {
+      stage('packaging') {
          sh 'mvn -ntp package -DskipTests'
       }
 
       stage('quality analysis') {
-        withSonarQubeEnv('sonar') {
-          sh 'mvn -ntp -Psonar initialize sonar:sonar'
+        steps {
+          withSonarQubeEnv('sonar') {
+            sh 'mvn -ntp -Psonar initialize sonar:sonar'
+          }
         }
       }
     }
