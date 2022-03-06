@@ -54,7 +54,7 @@ pipeline {
 
       stage('build native image') {
         steps {
-          sh 'mvn -ntp -Pnative-image spring-boot:build-image'
+          sh 'mvn -ntp -Pnative-image spring-boot:build-image -DskipTests'
         }
       }
     }
