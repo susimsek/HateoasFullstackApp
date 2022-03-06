@@ -10,7 +10,7 @@ public class CapabilityAdvice {
 
     @ExceptionHandler(CapabilityNotFoundException.class)
     public final ResponseEntity<CapabilityNotFoundResponse> capabilityNotFoundResponseResponseEntity(CapabilityNotFoundException ex) {
-        CapabilityNotFoundResponse response = new CapabilityNotFoundResponse(ex.getMessage());
+        var response = new CapabilityNotFoundResponse(ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 }

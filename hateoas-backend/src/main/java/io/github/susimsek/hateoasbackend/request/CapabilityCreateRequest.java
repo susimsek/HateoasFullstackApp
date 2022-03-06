@@ -1,7 +1,7 @@
 package io.github.susimsek.hateoasbackend.request;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.NotBlank;
 
 public record CapabilityCreateRequest(

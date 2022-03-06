@@ -15,7 +15,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -28,7 +27,7 @@ public class CapabilityService {
     public List<CapabilityDto> getAllCapabilities() {
         return capabilityRepository.findAll().stream()
                 .map(capabilityMapper::toDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public Page<CapabilityDto> getAllCapabilitiesWithPagination(Pageable pageable) {
@@ -37,24 +36,24 @@ public class CapabilityService {
     }
 
     public CapabilityDto getCapability(Long id) {
-        Capability capability = findById(id);
+        var capability = findById(id);
         return capabilityMapper.toDto(capability);
     }
 
     public CapabilityDto saveCapability(CapabilityCreateRequest capabilityCreateRequest) {
-        Capability capability = capabilityMapper.toCapability(capabilityCreateRequest);
+        var capability = capabilityMapper.toCapability(capabilityCreateRequest);
         capability = capabilityRepository.save(capability);
         return save(capability);
     }
 
     public CapabilityDto updateCapability(Long id, CapabilityUpdateRequest capabilityUpdateRequest) {
-        Capability capability = findById(id);
+        var capability = findById(id);
         capabilityMapper.partialUpdate(capability, capabilityUpdateRequest);
         return save(capability);
     }
 
     public void deleteCapability(Long id) {
-        Capability capability = findById(id);
+        var capability = findById(id);
         capabilityRepository.delete(capability);
     }
 
