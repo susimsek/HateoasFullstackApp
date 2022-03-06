@@ -12,12 +12,12 @@ node {
 
         stage('clean') {
             sh "chmod +x mvnw"
-            sh "./mvnw clean"
+            sh "./mvnw -ntp clean"
         }
 
         stage('test') {
             try {
-                sh "./mvnw verify"
+                sh "./mvnw -ntp verify"
             } catch(err) {
                 throw err
             } /* finally {
@@ -26,18 +26,19 @@ node {
         }
 
         stage('packaging') {
-            sh "./mvnw -DskipTests verify"
+            sh "./mvnw -ntp verify -DskipTests"
             archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
         }
 
         stage('quality analysis') {
             withSonarQubeEnv('sonar') {
-                sh "./mvnw -Psonar initialize sonar:sonar"
+                sh "./mvnw -ntp -Psonar initialize sonar:sonar"
             }
         }
+    }
 
-        stage('native build docker') {
-          sh "./mvnw -Pnative-image clean -DskipTests spring-boot:build-image"
-        }
+    def dockerImage
+    stage('native build docker') {
+      sh "./mvnw -ntp -Pnative-image verify spring-boot:build-image"
     }
 }
