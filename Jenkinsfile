@@ -15,7 +15,7 @@ node {
             sh "./mvnw clean"
         }
 
-        stage('backend tests') {
+        stage('test') {
             try {
                 sh "./mvnw verify"
             } catch(err) {
