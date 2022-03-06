@@ -17,7 +17,7 @@ node {
 
         stage('test') {
             try {
-                sh "./mvnw -Pnative-image verify"
+                sh "./mvnw verify"
             } catch(err) {
                 throw err
             } /* finally {
@@ -26,7 +26,7 @@ node {
         }
 
         stage('packaging') {
-            sh "./mvnw -Pnative-image verify -DskipTests"
+            sh "./mvnw -DskipTests verify"
             archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
         }
 
@@ -39,6 +39,6 @@ node {
 
     def dockerImage
     stage('native build docker') {
-        sh "./mvnw -Pnative-image spring-boot:build-image -DskipTests"
+        sh "./mvnw -Pnative-image -DskipTests spring-boot:build-image"
     }
 }
