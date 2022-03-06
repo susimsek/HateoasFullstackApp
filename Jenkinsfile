@@ -5,7 +5,7 @@ node {
         checkout scm
     }
 
-    docker.image('eclipse-temurin:17-jdk-alpine').inside() {
+    docker.image('eclipse-temurin:17-jdk-focal').inside() {
         stage('check java') {
             sh "java -version"
         }
