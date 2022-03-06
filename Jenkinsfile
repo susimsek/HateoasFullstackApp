@@ -30,7 +30,7 @@ pipeline {
         steps {
          script {
            try {
-                 sh 'mvn -ntp verify'
+                 sh 'mvn -ntp test'
            } catch(err) {
                throw err
              }
@@ -40,7 +40,7 @@ pipeline {
 
       stage('packaging') {
         steps {
-           sh 'mvn -ntp verify -DskipTests'
+           sh 'mvn -ntp package -DskipTests'
         }
       }
 
