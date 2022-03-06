@@ -28,11 +28,13 @@ pipeline {
 
        stage('test') {
         steps {
-         try {
-                        sh 'mvn -ntp verify'
-                    } catch(err) {
-                        throw err
-                      }
+         script {
+           try {
+                 sh 'mvn -ntp verify'
+           } catch(err) {
+               throw err
+             }
+           }
         }
        }
 
