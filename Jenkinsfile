@@ -39,7 +39,9 @@ pipeline {
        }
 
       stage('packaging') {
-         sh 'mvn -ntp package -DskipTests'
+        steps {
+           sh 'mvn -ntp package -DskipTests'
+        }
       }
 
       stage('quality analysis') {
