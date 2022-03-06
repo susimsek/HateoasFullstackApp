@@ -40,7 +40,7 @@ pipeline {
 
       stage('packaging') {
         steps {
-           sh 'mvn -ntp package -DskipTests'
+           sh 'mvn -ntp verify -DskipTests'
         }
       }
 
@@ -49,6 +49,12 @@ pipeline {
           withSonarQubeEnv('sonar') {
             sh 'mvn -ntp -Psonar initialize sonar:sonar'
           }
+        }
+      }
+
+      stage('build native image') {
+        steps {
+          sh 'mvn -ntp -Pnative-image spring-boot:build-image'
         }
       }
     }
