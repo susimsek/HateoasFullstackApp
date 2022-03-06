@@ -1,5 +1,34 @@
 #!/usr/bin/env groovy
 
+pipeline {
+    agent any
+    tools {
+      jdk 'jdk17'
+      maven 'maven3'
+    }
+
+    stages {
+        stage('checkout scm') {
+           steps {
+             checkout scm
+           }
+        }
+
+        stage('check java') {
+          steps {
+            sh 'java -version'
+          }
+       }
+
+       stage('clean') {
+         steps {
+           sh 'mvn -ntp clean'
+         }
+       }
+    }
+}
+
+/*
 node {
     stage('checkout') {
         checkout scm
@@ -15,19 +44,36 @@ node {
             sh "./mvnw -ntp clean"
         }
 
-        /* stage('test') {
+         */
+/* stage('test') {
             try {
                 sh "./mvnw -ntp -Pnative verify"
             } catch(err) {
                 throw err
-            }  *//* finally {
-                junit '**//*  *//* target/surefire-reports/TEST-*.xml,**//*  *//* target/failsafe-reports/TEST-*.xml'
+            }  *//*
+ */
+/* finally {
+                junit '**//*
+ */
+/*  *//*
+ */
+/* target/surefire-reports/TEST-*.xml,**//*
+ */
+/*  *//*
+ */
+/* target/failsafe-reports/TEST-*.xml'
             } *//*
+ */
+/*
         }
 
         stage('packaging') {
             sh "./mvnw -ntp -Pnative verify -DskipTests"
-            archiveArtifacts artifacts: '**//* target *//*.jar', fingerprint: true
+            archiveArtifacts artifacts: '**//*
+ */
+/* target *//*
+ */
+/*.jar', fingerprint: true
         }
 
         stage('quality analysis') {
@@ -39,7 +85,8 @@ node {
          stage('clean') {
                     sh "chmod +x mvnw"
                     sh "./mvnw -ntp clean"
-         } */
+         } *//*
+
     }
 
      def dockerImage
@@ -51,4 +98,4 @@ node {
 //     stage('native build docker') {
 //       sh "./mvnw -ntp -Pnative-image spring-boot:build-image -DskipTests"
 //     }
-}
+ */
