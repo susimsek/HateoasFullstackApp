@@ -20,9 +20,9 @@ node {
                 sh "./mvnw verify"
             } catch(err) {
                 throw err
-            } finally {
-                junit '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml'
-            }
+            } /* finally {
+                junit '**//* target/surefire-reports/TEST-*.xml,**//* target/failsafe-reports/TEST-*.xml'
+            } */
         }
 
         stage('packaging') {
@@ -37,8 +37,8 @@ node {
         }
     }
 
-//     def dockerImage
-//     stage('native build docker') {
-//         sh ".mvn -Pnative-image spring-boot:build-image"
-//     }
+   /*  def dockerImage
+    stage('native build docker') {
+        sh ".mvn -Pnative-image spring-boot:build-image"
+    } */
 }
