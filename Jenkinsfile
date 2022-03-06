@@ -47,7 +47,7 @@ node {
             sh "./mvnw -ntp -Pjib compile jib:build -DskipTests"
         }
 
-    def dockerImage
+//    def dockerImage
 //     stage('native build docker') {
 //       sh "./mvnw -ntp -Pnative-image spring-boot:build-image -DskipTests"
 //     }
