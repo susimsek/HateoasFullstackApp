@@ -27,13 +27,13 @@ pipeline {
        }
 
        stage('test') {
-         script {
-           try {
-               sh 'mvn -ntp verify'
-           } catch(err) {
-               throw err
-             }
-         }
+        steps {
+         try {
+                        sh 'mvn -ntp verify'
+                    } catch(err) {
+                        throw err
+                      }
+        }
        }
 
        stage('packaging') {
