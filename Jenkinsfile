@@ -40,13 +40,18 @@ pipeline {
 
        stage('packaging') {
          sh 'mvn -ntp package -DskipTests'
-         archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
       }
 
       stage('quality analysis') {
         withSonarQubeEnv('sonar') {
           sh 'mvn -ntp -Psonar initialize sonar:sonar'
         }
+      }
+    }
+
+    post {
+      always {
+        archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
       }
     }
 }
