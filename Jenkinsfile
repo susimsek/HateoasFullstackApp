@@ -5,7 +5,7 @@ node {
         checkout scm
     }
 
-    docker.image('eclipse-temurin:17-jdk-focal').inside() {
+    docker.image('eclipse-temurin:17-jdk-alpine').inside() {
         stage('check java') {
             sh "java -version"
         }
@@ -35,10 +35,15 @@ node {
                 sh "./mvnw -ntp -Psonar initialize sonar:sonar"
             }
         }
+
+         stage('clean') {
+                    sh "chmod +x mvnw"
+                    sh "./mvnw -ntp clean"
+         }
     }
 
     def dockerImage
     stage('native build docker') {
-      sh "./mvnw -ntp -Pnative-image verify spring-boot:build-image"
+      sh "./mvnw -ntp -Pnative-image spring-boot:build-image -DskipTests"
     }
 }
