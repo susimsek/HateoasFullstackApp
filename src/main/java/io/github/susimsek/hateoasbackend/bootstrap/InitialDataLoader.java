@@ -43,12 +43,10 @@ public class InitialDataLoader implements CommandLineRunner {
                 .build());
 
         IntStream.rangeClosed(1, 10)
-                .forEach(i -> {
-                    capabilityRepository.save(Capability.builder()
-                            .techStack("TechStack" + i)
-                            .numOfDevelopers(50 + i)
-                            .numOfAvailableDevelopers(20 + 3*i)
-                            .build());
-                });
+                .forEach(i -> capabilityRepository.save(Capability.builder()
+                        .techStack("TechStack" + i)
+                        .numOfDevelopers(50 + i)
+                        .numOfAvailableDevelopers(20 + 3 * i)
+                        .build()));
     }
 }

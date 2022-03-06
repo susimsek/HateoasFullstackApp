@@ -13,6 +13,9 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.hateoas.server.SimpleRepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
+import static io.github.susimsek.hateoasbackend.constant.CapabilityLinkConstants.CAPABILITIES;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -26,18 +29,19 @@ public class CapabilityModelAssembler implements SimpleRepresentationModelAssemb
     @Override
     public void addLinks(CollectionModel<EntityModel<CapabilityDto>> resources) {
         resources.add(linkTo(methodOn(CapabilityController.class).getAllCapabilities()).withSelfRel());
-        resources.add(linkTo(methodOn(CapabilityController.class).getAllCapabilities()).withRel("capabilities"));
+        resources.add(linkTo(methodOn(CapabilityController.class).getAllCapabilities()).withRel(CAPABILITIES));
     }
 
     @Override
     public void addLinks(EntityModel<CapabilityDto> resource) {
-        resource.add(linkTo(methodOn(CapabilityController.class).getCapability(resource.getContent().getId())).withSelfRel());
-        resource.add(linkTo(methodOn(CapabilityController.class).getAllCapabilities()).withRel("capabilities"));
+        var contentOptional = Optional.ofNullable(resource.getContent());
+        contentOptional.ifPresent(content -> resource.add(linkTo(methodOn(CapabilityController.class).getCapability(resource.getContent().getId())).withSelfRel()));
+        resource.add(linkTo(methodOn(CapabilityController.class).getAllCapabilities()).withRel(CAPABILITIES));
     }
 
     public PagedModel<EntityModel<CapabilityDto>> toPagedModel(Page<CapabilityDto> page) {
         PagedModel<EntityModel<CapabilityDto>> resources = pagedResourcesAssembler.toModel(page, this);
-        resources.add(linkTo(methodOn(CapabilityController.class).getAllCapabilities()).withRel("capabilities"));
+        resources.add(linkTo(methodOn(CapabilityController.class).getAllCapabilities()).withRel(CAPABILITIES));
         return resources;
     }
 }
