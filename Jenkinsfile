@@ -17,7 +17,7 @@ node {
 
         stage('test') {
             try {
-                sh "./mvnw verify"
+                sh "./mvnw -Pnative-image verify"
             } catch(err) {
                 throw err
             } /* finally {
@@ -26,7 +26,7 @@ node {
         }
 
         stage('packaging') {
-            sh "./mvnw verify -DskipTests"
+            sh "./mvnw -Pnative-image verify -DskipTests"
             archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
         }
 
