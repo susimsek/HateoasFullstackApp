@@ -40,5 +40,6 @@ pipeline {
             dockerImage = docker.build 'web'
           }
         }
+      }
     }
 }
