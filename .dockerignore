@@ -69,3 +69,4 @@ out/
 ######################
 /coverage/
 /.nyc_output/
+.scannerwork
