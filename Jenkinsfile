@@ -51,7 +51,7 @@ pipeline {
         steps {
           script {
             docker.withRegistry( 'https://registry.heroku.com', registryCredential ) {
-              dockerImage.push('latest')
+              dockerImage.push()
             }
           }
         }
