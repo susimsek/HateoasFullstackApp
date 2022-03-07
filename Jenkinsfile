@@ -7,7 +7,8 @@ pipeline {
     }
 
     environment {
-     imageTag = 'web'
+     imageTag = 'registry.heroku.com/hateoas-fullstack-ui/web'
+     registryCredential = 'heroku-registry'
      dockerImage = ''
     }
 
@@ -42,6 +43,16 @@ pipeline {
         steps {
           script {
             dockerImage = docker.build imageTag
+          }
+        }
+      }
+
+      stage('Build Docker') {
+        steps {
+          script {
+            docker.withRegistry( 'https://registry.heroku.com', registryCredential ) {
+              dockerImage.push('latest')
+            }
           }
         }
       }
