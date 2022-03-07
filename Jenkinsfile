@@ -32,5 +32,10 @@ pipeline {
           }
         }
       }
+
+      def dockerImage
+      stage('Build Docker '){
+           dockerImage = docker.build 'web'
+      }
     }
 }
