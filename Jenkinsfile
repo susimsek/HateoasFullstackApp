@@ -34,7 +34,7 @@ pipeline {
       }
 
       def dockerImage
-      stage('Build Docker '){
+      stage('Build Docker'){
            dockerImage = docker.build 'web'
       }
     }
