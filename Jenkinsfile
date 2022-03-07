@@ -13,6 +13,11 @@ pipeline {
            }
         }
 
+        environment {
+          imageTag = 'web'
+          dockerImage = ''
+        }
+
         stage('check node') {
           steps {
             sh 'node -v'
@@ -33,11 +38,10 @@ pipeline {
         }
       }
 
-      def dockerImage
       stage('Build Docker') {
         steps {
           script {
-            dockerImage = docker.build 'web'
+            dockerImage = docker.build imageTag
           }
         }
       }
