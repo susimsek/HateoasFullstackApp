@@ -6,18 +6,13 @@ pipeline {
       nodejs 'node14'
     }
 
+    def dockerImage
     stages {
         stage('checkout scm') {
            steps {
              checkout scm
            }
         }
-
-        environment {
-          imageTag = 'web'
-          dockerImage = ''
-        }
-
         stage('check node') {
           steps {
             sh 'node -v'
@@ -41,7 +36,7 @@ pipeline {
       stage('Build Docker') {
         steps {
           script {
-            dockerImage = docker.build imageTag
+            dockerImage = docker.build 'web'
           }
         }
       }
