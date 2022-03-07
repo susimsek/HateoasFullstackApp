@@ -57,8 +57,6 @@ const UpdateCapability = (props) => {
     const onSubmit = async e => {
         e.preventDefault();
 
-        const {id, techStack, numOfDevelopers, numOfAvailableDevelopers} = form;
-
         const updateCapability = {
             id,
             techStack,
