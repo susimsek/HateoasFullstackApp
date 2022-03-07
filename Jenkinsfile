@@ -47,7 +47,7 @@ pipeline {
         }
       }
 
-      stage('Build Docker') {
+      stage('Publish Docker') {
         steps {
           script {
             docker.withRegistry( 'https://registry.heroku.com', registryCredential ) {
