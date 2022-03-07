@@ -65,8 +65,8 @@ const UpdateCapability = (props) => {
         };
         try {
             setPendingApiCall(true);
-            await dispatch(updateCapabilityHandler(updateCapability,
-                links.self.href));
+            let response = Promise.resolve(dispatch(updateCapabilityHandler(updateCapability, links.self.href)));
+            await response;
             setPendingApiCall(false);
             closeModal();
         } catch (error) {

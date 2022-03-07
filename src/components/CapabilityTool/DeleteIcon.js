@@ -38,7 +38,8 @@ const DeleteIcon = (props) => {
 
     const onDeleteClick = async () => {
         try {
-            await dispatch(deleteCapabilityHandler(id, links.self.href));
+            let response = Promise.resolve(dispatch(deleteCapabilityHandler(id, links.self.href)));
+            await response;
             closeModal();
         } catch (error) {
         }
