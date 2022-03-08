@@ -382,6 +382,7 @@
                                 <publishRegistry>
                                     <username>${DOCKER_REGISTRY_USER}</username>
                                     <password>${DOCKER_REGISTRY_PWD}</password>
+                                    <url>https://registry.heroku.com</url>
                                 </publishRegistry>
                             </docker>
                         </configuration>
