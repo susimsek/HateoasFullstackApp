@@ -7,6 +7,13 @@ pipeline {
       maven 'maven3'
     }
 
+    environment {
+         imageTag = 'registry.heroku.com/hateoas-fullstack-ui/web'
+         registryCredential = 'heroku-registry'
+         registryUrl = 'heroku-registry'
+         dockerImage = ''
+        }
+
     stages {
         stage('checkout scm') {
            steps {
@@ -52,9 +59,11 @@ pipeline {
         }
       }
 
-      stage('build native image') {
+      stage('publish native image') {
         steps {
-          sh 'mvn -ntp -Pnative-image spring-boot:build-image -DskipTests'
+            withCredentials([usernamePassword(credentialsId: registryCredential, passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
+              sh 'mvn -ntp -Pnative-image spring-boot:build-image -DskipTests'
+            }
         }
       }
     }
