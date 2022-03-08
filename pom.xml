@@ -380,9 +380,8 @@
                             </image>
                             <docker>
                                 <publishRegistry>
-                                    <username>${DOCKER_REGISTRY_USER}</username>
-                                    <password>${DOCKER_REGISTRY_PWD}</password>
-                                    <url>https://registry.heroku.com</url>
+                                    <username>${env.DOCKER_REGISTRY_USER}</username>
+                                    <password>${env.DOCKER_REGISTRY_PWD}</password>
                                 </publishRegistry>
                             </docker>
                         </configuration>
