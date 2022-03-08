@@ -8,7 +8,7 @@ pipeline {
     }
 
     parameters {
-            booleanParam(name: "nativeImageEnabled", defaultValue: false)
+                booleanParam(name: "NATIVE_IMAGE_ENABLED", defaultValue: false)
     }
 
     environment {
@@ -61,13 +61,25 @@ pipeline {
         }
       }
 
-      stage('publish native image') {
-        steps {
-            withCredentials([usernamePassword(credentialsId: registryCredential, passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
-              if () {
+      stage("Publish Docker") {
+        parallel {
+          stage("Build native image") {
+            when { expression { params.NATIVE_IMAGE_ENABLED } }
+            steps {
+              withCredentials([usernamePassword(credentialsId:'heroku-registry', passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
+                sh 'mvn -ntp -Pnative-image spring-boot:build-image -DskipTests'
               }
-              sh 'mvn -ntp -Pnative-image spring-boot:build-image -DskipTests'
             }
+          }
+
+          stage('Build image') {
+             when { expression { !params.NATIVE_IMAGE_ENABLED } }
+             steps {
+               withCredentials([usernamePassword(credentialsId:'heroku-registry', passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
+                 sh 'mvn -ntp -Pjib jib:build -DskipTests'
+               }
+             }
+          }
         }
       }
     }
