@@ -7,6 +7,10 @@ pipeline {
       maven 'maven3'
     }
 
+    parameters {
+            booleanParam(name: "nativeImageEnabled", defaultValue: false)
+    }
+
     environment {
          imageTag = 'registry.heroku.com/hateoas-fullstack-ui/web'
          registryCredential = 'heroku-registry'
@@ -60,6 +64,8 @@ pipeline {
       stage('publish native image') {
         steps {
             withCredentials([usernamePassword(credentialsId: registryCredential, passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
+              if () {
+              }
               sh 'mvn -ntp -Pnative-image spring-boot:build-image -DskipTests'
             }
         }
