@@ -1,44 +1,92 @@
 #!/usr/bin/env groovy
 
-node {
-    stage('checkout') {
-        checkout scm
+pipeline {
+    agent any
+    tools {
+      jdk 'jdk17'
+      maven 'maven3'
     }
 
-    docker.image('eclipse-temurin:17-jdk-alpine').inside() {
+    parameters {
+      booleanParam(name: "NATIVE_IMAGE_ENABLED", defaultValue: true)
+    }
+
+    environment {
+         imageTag = 'registry.heroku.com/hateoas-fullstack-ui/web'
+         registryCredential = 'heroku-registry'
+        }
+
+    stages {
+        stage('checkout scm') {
+           steps {
+             checkout scm
+           }
+        }
+
         stage('check java') {
-            sh "java -version"
-        }
+          steps {
+            sh 'java -version'
+          }
+       }
 
-        stage('clean') {
-            sh "chmod +x mvnw"
-            sh "./mvnw clean"
-        }
+       stage('clean') {
+         steps {
+           sh 'mvn -ntp clean'
+         }
+       }
 
-        stage('backend tests') {
-            try {
-                sh "./mvnw verify"
-            } catch(err) {
-                throw err
-            } finally {
-                junit '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml'
+       stage('test') {
+        steps {
+         script {
+           try {
+                 sh 'mvn -ntp test'
+           } catch(err) {
+               throw err
+             }
+           }
+        }
+       }
+
+      stage('packaging') {
+        steps {
+           sh 'mvn -ntp package -DskipTests'
+        }
+      }
+
+      stage('quality analysis') {
+        steps {
+          withSonarQubeEnv('sonar') {
+            sh 'mvn -ntp -Psonar initialize sonar:sonar'
+          }
+        }
+      }
+
+      stage("Publish Docker") {
+        parallel {
+          stage("Build native image") {
+            when { expression { params.NATIVE_IMAGE_ENABLED } }
+            steps {
+              withCredentials([usernamePassword(credentialsId:'heroku-registry', passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
+                sh 'mvn -ntp -Pnative-image spring-boot:build-image -DskipTests'
+              }
             }
-        }
+          }
 
-        stage('packaging') {
-            sh "./mvnw verify -DskipTests"
-            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+          stage('Build image') {
+             when { expression { !params.NATIVE_IMAGE_ENABLED } }
+             steps {
+               withCredentials([usernamePassword(credentialsId:'heroku-registry', passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
+                 sh 'mvn -ntp -Pjib jib:build -DskipTests'
+               }
+             }
+          }
         }
-
-        stage('quality analysis') {
-            withSonarQubeEnv('sonar') {
-                sh "./mvnw -Psonar initialize sonar:sonar"
-            }
-        }
+      }
     }
 
-//     def dockerImage
-//     stage('native build docker') {
-//         sh ".mvn -Pnative-image spring-boot:build-image"
-//     }
+    post {
+      always {
+        archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+      }
+    }
 }

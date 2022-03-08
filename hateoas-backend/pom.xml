@@ -318,6 +318,10 @@
                             </from>
                             <to>
                                 <image>${heroku.image.name}</image>
+                                <auth>
+                                    <username>${DOCKER_REGISTRY_USER}</username>
+                                    <password>${DOCKER_REGISTRY_PWD}</password>
+                                </auth>
                             </to>
                             <container>
                                 <jvmFlags>
@@ -359,6 +363,8 @@
                             <image>
                                 <builder>paketobuildpacks/builder:tiny</builder>
                                 <name>${heroku.image.name}</name>
+                                <publish>true</publish>
+                                <pullPolicy>IF_NOT_PRESENT</pullPolicy>
                                 <env>
                                     <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
                                     <BP_BINARY_COMPRESSION_METHOD>upx</BP_BINARY_COMPRESSION_METHOD>
@@ -368,10 +374,14 @@
                                         --initialize-at-build-time=sun.instrument.InstrumentationImpl
                                         --initialize-at-run-time=io.netty.handler.ssl.BouncyCastleAlpnSslUtils
                                     </BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
-                                    <publish>false</publish>
-                                    <pullPolicy>IF_NOT_PRESENT</pullPolicy>
                                 </env>
                             </image>
+                            <docker>
+                                <publishRegistry>
+                                    <username>${DOCKER_REGISTRY_USER}</username>
+                                    <password>${DOCKER_REGISTRY_PWD}</password>
+                                </publishRegistry>
+                            </docker>
                         </configuration>
                     </plugin>
                     <plugin>
