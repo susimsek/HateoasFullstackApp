@@ -8,7 +8,7 @@ pipeline {
     }
 
     parameters {
-      booleanParam(name: "NATIVE_IMAGE_ENABLED", defaultValue: false)
+      booleanParam(name: "NATIVE_IMAGE_ENABLED", defaultValue: true)
     }
 
     environment {
