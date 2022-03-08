@@ -359,6 +359,13 @@
                             <image>
                                 <builder>paketobuildpacks/builder:tiny</builder>
                                 <name>${heroku.image.name}</name>
+                                <publish>true</publish>
+                                <docker>
+                                    <publishRegistry>
+                                        <username>${DOCKER_REGISTRY_USER}</username>
+                                        <token>${DOCKER_REGISTRY_PWD}</token>
+                                    </publishRegistry>
+                                </docker>
                                 <env>
                                     <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
                                     <BP_BINARY_COMPRESSION_METHOD>upx</BP_BINARY_COMPRESSION_METHOD>
@@ -368,13 +375,7 @@
                                         --initialize-at-build-time=sun.instrument.InstrumentationImpl
                                         --initialize-at-run-time=io.netty.handler.ssl.BouncyCastleAlpnSslUtils
                                     </BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
-                                    <publish>true</publish>
-                                    <docker>
-                                        <publishRegistry>
-                                            <username>${DOCKER_REGISTRY_USER}</username>
-                                            <token>${DOCKER_REGISTRY_PWD}</token>
-                                        </publishRegistry>
-                                    </docker>
+
                                     <pullPolicy>IF_NOT_PRESENT</pullPolicy>
                                 </env>
                             </image>
