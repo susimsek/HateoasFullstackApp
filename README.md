@@ -130,6 +130,7 @@ docker-compose -f deploy/docker/docker-compose.yaml up -d
 * Docker
 * Heroku
 * Sonarqube
+* Jenkins
 * Upx
 * Spring Boot
 * Spring Hateoas
