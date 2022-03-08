@@ -10,8 +10,6 @@ pipeline {
     environment {
          imageTag = 'registry.heroku.com/hateoas-fullstack-ui/web'
          registryCredential = 'heroku-registry'
-         registryUrl = 'heroku-registry'
-         dockerImage = ''
         }
 
     stages {
