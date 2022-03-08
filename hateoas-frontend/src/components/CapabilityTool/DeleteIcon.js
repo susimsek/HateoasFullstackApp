@@ -1,17 +1,13 @@
 import React, {useState} from 'react';
-import {faTimes, faTrash, faTrashCan, faUserEdit, faUserTimes} from "@fortawesome/free-solid-svg-icons";
+import {faTimes, faTrash, faTrashCan} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import UpdateCapability from "./UpdateCapability";
 import {Button, Card, Modal} from 'react-bootstrap';
 import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
 import {
-    addCapabilityHandler,
     closeModalClearState,
-    deleteCapabilityHandler,
-    getErrors
+    deleteCapabilityHandler
 } from "../../actions/CapabilityActions";
-import AddCapability from "./AddCapability";
 import {useApiProgress} from "../../shared/ApiProgress";
 import ButtonWithProgress from "./ButtonWithProgress";
 
@@ -42,7 +38,8 @@ const DeleteIcon = (props) => {
 
     const onDeleteClick = async () => {
         try {
-            await dispatch(deleteCapabilityHandler(id, links.self.href));
+            let response = Promise.resolve(dispatch(deleteCapabilityHandler(id, links.self.href)));
+            await response;
             closeModal();
         } catch (error) {
         }

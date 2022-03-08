@@ -18,7 +18,7 @@ const initialState = {
   }
 };
 
-export default function(state = initialState, action) {
+export default function(state = initialState, action = {}) {
   switch (action.type) {
 
     case GET_CAPABILITIES:
@@ -58,7 +58,7 @@ export default function(state = initialState, action) {
         ...state,
         capabilities: state.capabilities.map(
             capability => capability.id === action.payload.id ?
-                (capability = action.payload) :
+                (action.payload) :
                 capability)
       }
 

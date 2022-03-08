@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import AddButton from "./AddButton";
 import Capability from "./Capability";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteCapabilityHandler, getAllCapabilitiesHandler} from "../../actions/CapabilityActions";
+import {getAllCapabilitiesHandler} from "../../actions/CapabilityActions";
 import {useApiProgress} from "../../shared/ApiProgress";
 import {Card, Pagination, Spinner} from "react-bootstrap";
 

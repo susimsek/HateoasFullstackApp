@@ -57,8 +57,6 @@ const UpdateCapability = (props) => {
     const onSubmit = async e => {
         e.preventDefault();
 
-        const {id, techStack, numOfDevelopers, numOfAvailableDevelopers} = form;
-
         const updateCapability = {
             id,
             techStack,
@@ -67,8 +65,8 @@ const UpdateCapability = (props) => {
         };
         try {
             setPendingApiCall(true);
-            await dispatch(updateCapabilityHandler(updateCapability,
-                links.self.href));
+            let response = Promise.resolve(dispatch(updateCapabilityHandler(updateCapability, links.self.href)));
+            await response;
             setPendingApiCall(false);
             closeModal();
         } catch (error) {

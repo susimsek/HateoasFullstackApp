@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import Header from "./components/Layout/Header";
 import Landing from "./components/Layout/Landing";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
@@ -9,6 +8,7 @@ import AddCapability from "./components/CapabilityTool/AddCapability";
 import UpdateCapability from "./components/CapabilityTool/UpdateCapability";
 import { Provider } from "react-redux";
 import store from "./store";
+
 
 const App = () => {
   return (

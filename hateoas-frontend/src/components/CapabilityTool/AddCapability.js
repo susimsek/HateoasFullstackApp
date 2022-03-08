@@ -45,15 +45,14 @@ const AddCapability = (props) => {
     const onSubmit = async e => {
         e.preventDefault();
 
-        const {techStack, numOfDevelopers, numOfAvailableDevelopers} = form;
-
         const newCapability = {
             techStack,
             numOfDevelopers,
             numOfAvailableDevelopers
         };
         try {
-            await dispatch(addCapabilityHandler(newCapability, postLink));
+            let response = Promise.resolve(dispatch(addCapabilityHandler(newCapability, postLink)));
+            await response;
             closeModal();
         } catch (error) {
             dispatch(getErrors(error.response.data));
