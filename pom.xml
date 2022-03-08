@@ -14,6 +14,8 @@
     <name>hateoas-backend</name>
     <description>hateoas-backend</description>
     <properties>
+        <DOCKER_REGISTRY_USER/>
+        <DOCKER_REGISTRY_PWD/>
         <java.version>17</java.version>
         <springdoc.version>1.6.6</springdoc.version>
         <springdoc-openapi-maven-plugin.version>1.3</springdoc-openapi-maven-plugin.version>
