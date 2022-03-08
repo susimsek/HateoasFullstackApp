@@ -9,6 +9,7 @@ pipeline {
 
     environment {
          imageTag = 'registry.heroku.com/hateoas-fullstack-ui/web'
+         registryCredential = 'heroku-registry'
         }
 
     stages {
@@ -58,7 +59,7 @@ pipeline {
 
       stage('publish native image') {
         steps {
-            withCredentials([usernamePassword(credentialsId: 'heroku-registry', passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
+            withCredentials([usernamePassword(credentialsId: registryCredential, passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
               sh 'mvn -ntp -Pnative-image spring-boot:build-image -DskipTests'
             }
         }
