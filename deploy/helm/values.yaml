@@ -1,0 +1,128 @@
+global:
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 1
+  imagePullSecrets: []
+
+api:
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 11
+    targetCPU: 50
+    targetMemory: 50
+  replicaCount: 2
+  containerPorts:
+    http: 9090
+  image:
+    repository: suayb/hateoas-fullstack-api
+    tag: 1.0.0
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 80
+    clusterIP:
+    loadBalancerIP:
+  environment:
+  ingress:
+    enabled: true
+    certManager: false
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+    path: /
+    hostName: hateoas-fullstack-api.github.io
+    tls: []
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  readinessProbe:
+    enabled: true
+    httpGet:
+      path: /actuator/health/readiness
+      port: http
+      scheme: HTTP
+      httpHeaders: [ ]
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 2
+    failureThreshold: 6
+    successThreshold: 1
+  livenessProbe:
+    enabled: true
+    httpGet:
+      path: /actuator/health/liveness
+      port: http
+      scheme: HTTP
+      httpHeaders: [ ]
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 2
+    failureThreshold: 3
+    successThreshold: 1
+  customLivenessProbe: { }
+  customReadinessProbe: { }
+  extraVolumeMounts: []
+  extraVolumes: []
+
+ui:
+  replicaCount: 2
+  containerPorts:
+    http: 80
+  image:
+    repository: suayb/hateoas-fullstack-ui
+    tag: 1.0.0
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 80
+    clusterIP:
+    loadBalancerIP:
+  ingress:
+    enabled: true
+    certManager: false
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+    path: /
+    hostName: hateoas-fullstack-ui.github.io
+    tls: []
+  resources:
+    requests:
+      cpu: 200m
+      memory: 128Mi
+    limits:
+      cpu: 300m
+      memory: 250Mi
+  readinessProbe:
+    enabled: true
+    httpGet:
+      path: /index.html
+      port: http
+      scheme: HTTP
+      httpHeaders: [ ]
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 2
+    failureThreshold: 1
+    successThreshold: 1
+  livenessProbe:
+    enabled: true
+    httpGet:
+      path: /index.html
+      port: http
+      scheme: HTTP
+      httpHeaders: [ ]
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 2
+    failureThreshold: 1
+    successThreshold: 1
+  customLivenessProbe: { }
+  customReadinessProbe: { }
+  extraVolumeMounts: []
+  extraVolumes: []

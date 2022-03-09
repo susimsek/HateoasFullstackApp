@@ -1,0 +1,14 @@
+apiVersion: v2
+name: hateoas-fullstack
+description: Hateoas Fullstack is a fullstack application
+icon: https://github.com/susimsek/spring-native-example/blob/main/images/spring-native-example.png
+keywords:
+  - spring
+  - react
+  - hateoas
+  - redux
+  - graalvm
+
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

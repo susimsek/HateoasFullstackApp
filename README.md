@@ -116,7 +116,7 @@ The docker image of ui can be built as follows:
 docker build -t web .
 ```
 
-## Run with Docker Compose
+## Deployment with Docker Compose
 
 You can start a hateoas fullstack app (accessible on http://localhost:3000) with
 
@@ -124,11 +124,27 @@ You can start a hateoas fullstack app (accessible on http://localhost:3000) with
 docker-compose -f deploy/docker/docker-compose.yaml up -d
 ```
 
+## Deployment Kubernetes with Helm
+
+You can deploy hateoas fullstack app by running the following bash command
+
+```sh
+ ./helm-apply.sh
+```
+
+You can upgrade hateoas fullstack apps (if you have made any changes to the generated manifests) by running the following bash command
+
+```sh
+./helm-upgrade.sh
+```
+
 # Used Technologies
 
 * Java 17
 * Docker
 * Heroku
+* Kubernetes
+* Helm
 * Sonarqube
 * Jenkins
 * Upx
