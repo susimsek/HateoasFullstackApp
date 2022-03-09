@@ -2,7 +2,6 @@ package io.github.susimsek.hateoasbackend.controller;
 
 import io.github.susimsek.hateoasbackend.assembler.CapabilityModelAssembler;
 import io.github.susimsek.hateoasbackend.dto.CapabilityDto;
-import io.github.susimsek.hateoasbackend.dto.GenericResponse;
 import io.github.susimsek.hateoasbackend.request.CapabilityCreateRequest;
 import io.github.susimsek.hateoasbackend.request.CapabilityUpdateRequest;
 import io.github.susimsek.hateoasbackend.services.CapabilityService;
@@ -108,11 +107,11 @@ public class CapabilityController {
 
     @Operation(summary = "Delete a capability", description = "", tags = { "capability" })
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "successful operation"),
+            @ApiResponse(responseCode = "204", description = "successful operation"),
             @ApiResponse(responseCode = "404", description = "Capability not found", content = @Content)})
     @DeleteMapping(path = "/capabilities/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GenericResponse> deleteCapability(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCapability(@PathVariable Long id) {
         capabilityService.deleteCapability(id);
-        return ResponseEntity.ok(new GenericResponse("Capability Deleted"));
+        return ResponseEntity.noContent().build();
     }
 }
