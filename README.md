@@ -81,7 +81,7 @@ mvn -Psonar initialize sonar:sonar
 You can test code quality locally via sonarqube by typing the following command
 
 ```sh
-sonar-scanner
+npm run sonar
 ```
 
 Once the analysis completes, it will be available on the Sonar dashboard, which by default is available on http://localhost:9000.
