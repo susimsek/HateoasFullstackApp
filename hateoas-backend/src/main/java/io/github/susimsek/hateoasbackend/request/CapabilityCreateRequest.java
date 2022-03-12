@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 
 public record CapabilityCreateRequest(
         @Schema(description = "Name of the Technology Stack.", example = "JavaEE", required = true)
-        @NotBlank(message = "Technology Stack cannot be blank")
+        @NotBlank(message = "{error.constraints.techStack.NotBlank.message}")
         String techStack,
 
         @Schema(description = "Num of the Developers.", example = "20", required = false)
