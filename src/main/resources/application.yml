@@ -1,6 +1,7 @@
 server:
   forward-headers-strategy: framework
   port: ${PORT:8080}
+  shutdown: graceful
 
 management:
   endpoint:
@@ -34,13 +35,15 @@ spring:
           validation:
             mode: none
     open-in-view: false
+  h2:
+    console:
+      enabled: true
   hateoas:
     use-hal-as-default-json-media-type: true
   jackson:
     default-property-inclusion: non_null
-  h2:
-    console:
-      enabled: true
+  messages:
+    basename: i18n/messages
 
 springdoc:
   swagger-ui:

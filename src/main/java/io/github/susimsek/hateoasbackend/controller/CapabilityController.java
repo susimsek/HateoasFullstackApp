@@ -100,7 +100,7 @@ public class CapabilityController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<EntityModel<CapabilityDto>> updateCapability(@Valid @RequestBody CapabilityUpdateRequest capability,
-                                                                       @PathVariable long id) {
+                                                                      @PathVariable long id) {
         CapabilityDto updatedCapability = capabilityService.updateCapability(id, capability);
         return ResponseEntity.ok(assembler.toModel(updatedCapability));
     }
