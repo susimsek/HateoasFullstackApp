@@ -10,6 +10,7 @@ import {
 } from "../../actions/CapabilityActions";
 import {useApiProgress} from "../../shared/ApiProgress";
 import ButtonWithProgress from "./ButtonWithProgress";
+import { useTranslation } from 'react-i18next';
 
 const customStyles = {
     content: {
@@ -18,6 +19,8 @@ const customStyles = {
 };
 
 const DeleteIcon = (props) => {
+
+    const { t } = useTranslation(['global', 'capability']);
 
     const {id, links} = props;
 
@@ -54,13 +57,13 @@ const DeleteIcon = (props) => {
             <Modal show={modalVisible}
                    onHide={closeModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Delete Capability</Modal.Title>
+                    <Modal.Title>{t('capability:capability.home.deleteLabel')}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Card className="mb-3">
-                        <Card.Header className="bg-danger text-light">Delete Capability</Card.Header>
+                        <Card.Header className="bg-danger text-light">{t('capability:capability.home.deleteLabel')}</Card.Header>
                         <Card.Body>
-                            Are you sure to delete this capability?
+                            {t('capability:capability.delete.question')}
                         </Card.Body>
                     </Card>
                 </Modal.Body>
@@ -69,7 +72,7 @@ const DeleteIcon = (props) => {
                             size="lg"
                             onClick={closeModal}
                             disabled={pendingApiCall}>
-                        <FontAwesomeIcon icon={faTimes} /> Cancel
+                        <FontAwesomeIcon icon={faTimes} /> {t('global.entity.action.cancel')}
                     </Button>
                     <ButtonWithProgress
                             variant="danger"
@@ -77,7 +80,7 @@ const DeleteIcon = (props) => {
                             onClick={onDeleteClick}
                             pendingApiCall={pendingApiCall}
                             disabled={pendingApiCall}>
-                        <FontAwesomeIcon icon={faTrash} /> Delete
+                        <FontAwesomeIcon icon={faTrash} /> {t('global.entity.action.delete')}
                     </ButtonWithProgress>
                 </Modal.Footer>
             </Modal>

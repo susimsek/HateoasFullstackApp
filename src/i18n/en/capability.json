@@ -1,0 +1,15 @@
+{
+  "capability": {
+    "home": {
+      "createLabel": "Create Capability",
+      "editLabel": "Edit Capability",
+      "deleteLabel": "Delete Capability"
+    },
+    "delete": {
+      "question": "Are you sure you want to delete Capability?"
+    },
+    "techStack": "Technology Stack",
+    "numOfDevelopers": "Total Developers in Capability",
+    "numOfAvailableDevelopers": "Available developers for hire"
+  }
+}

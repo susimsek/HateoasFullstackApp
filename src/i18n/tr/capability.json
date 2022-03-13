@@ -1,0 +1,15 @@
+{
+  "capability": {
+    "home": {
+      "createLabel": "Kapasite Oluştur",
+      "editLabel": "Kapasite Düzenle",
+      "deleteLabel": "Kapasite Sil"
+    },
+    "delete": {
+      "question": "Kapasiteyi silmek istediğinizden emin misiniz?"
+    },
+    "techStack": "Teknoloji Yığını",
+    "numOfDevelopers": "Kapasitedeki Toplam Geliştiriciler",
+    "numOfAvailableDevelopers": "Kiralamak için uygun geliştiriciler"
+  }
+}
