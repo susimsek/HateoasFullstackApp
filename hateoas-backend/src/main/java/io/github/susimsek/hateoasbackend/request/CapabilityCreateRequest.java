@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 public record CapabilityCreateRequest(
         @Schema(description = "Name of the Technology Stack.", example = "JavaEE", required = true)
         @NotBlank(message = "{error.constraints.techStack.NotBlank.message}")
-        @Size(min = 1, max = 255)
+        @Size(min = 2, max = 255)
         String techStack,
 
         @Schema(description = "Num of the Developers.", example = "20", required = false)
