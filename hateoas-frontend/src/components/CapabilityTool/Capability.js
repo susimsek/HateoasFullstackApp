@@ -5,9 +5,11 @@ import {useDispatch} from "react-redux";
 import UpdateIcon from "./UpdateIcon";
 import {Card, ListGroup} from "react-bootstrap";
 import DeleteIcon from "./DeleteIcon";
+import { useTranslation } from 'react-i18next';
+
 
 const Capability = (props) => {
-    useDispatch();
+    const { t } = useTranslation('capability');
     const {capability} = props;
     const {
         id,
@@ -30,13 +32,13 @@ const Capability = (props) => {
 
               <ListGroup>
                   <ListGroup.Item variant="light" className="text-primary">
-                      Technology Stack: {techStack}
+                      {t('capability.techStack')}: {techStack}
                   </ListGroup.Item>
                   <ListGroup.Item variant="light" className="text-primary">
-                      Total Developers in Capability: {numOfDevelopers}
+                      {t('capability.numOfDevelopers')}: {numOfDevelopers}
                   </ListGroup.Item>
                   <ListGroup.Item variant="light" className="text-primary">
-                      Available developers for hire: {numOfAvailableDevelopers}
+                      {t('capability.numOfAvailableDevelopers')}: {numOfAvailableDevelopers}
                   </ListGroup.Item>
               </ListGroup>
           </Card.Body>

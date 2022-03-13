@@ -6,9 +6,11 @@ import AddCapability from "./AddCapability";
 import {useDispatch} from "react-redux";
 import {closeModalClearState} from "../../actions/CapabilityActions";
 import {Button, Modal} from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 const AddButton = () => {
     const dispatch = useDispatch();
+    const { t } = useTranslation('capability');
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -32,13 +34,13 @@ const AddButton = () => {
             <Button variant="outline-primary"
                     className="mb-3 text-left"
                     onClick={openModal}>
-                <FontAwesomeIcon icon={faPlusSquare} /> Add Capability
+                <FontAwesomeIcon icon={faPlusSquare} /> {t('capability.home.createLabel')}
             </Button>
             <Modal show={modalVisible}
                    onHide={closeModal}
                    dialogClassName={customStyles}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add Capability</Modal.Title>
+                    <Modal.Title>{t('capability.home.createLabel')}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <AddCapability closeModal={closeModal}/>

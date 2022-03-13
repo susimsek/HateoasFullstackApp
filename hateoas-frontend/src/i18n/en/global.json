@@ -1,0 +1,20 @@
+{
+  "global": {
+    "menu": {
+      "home": "Home",
+      "language": {
+        "main": "Language",
+        "en": "English",
+        "tr": "Turkish"
+      }
+    },
+    "entity": {
+      "action": {
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "edit": "Edit",
+        "save": "Save"
+      }
+    }
+  }
+}

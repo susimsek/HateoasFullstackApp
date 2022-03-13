@@ -7,10 +7,12 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSave} from "@fortawesome/free-solid-svg-icons";
 import ButtonWithProgress from "./ButtonWithProgress";
 import {useApiProgress} from "../../shared/ApiProgress";
+import { useTranslation } from 'react-i18next';
 
 const AddCapability = (props) => {
 
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const { t } = useTranslation(['global', 'capability']);
 
     const [form, setForm] = useState({
         techStack: "",
@@ -65,23 +67,23 @@ const AddCapability = (props) => {
 
   return (
       <Card className="mb-3">
-          <Card.Header className="bg-primary text-light">Add Capability</Card.Header>
+          <Card.Header className="bg-primary text-light">{t('capability:capability.home.createLabel')}</Card.Header>
           <Card.Body>
               <form onSubmit={onSubmit}>
                   <Input name="techStack"
-                         placeholder="Technology Stack"
+                         placeholder= {t('capability:capability.techStack')}
                          value={techStack}
                          onChange={onChange}
                          error={techStackError}/>
                   <Input type="number"
                          name="numOfDevelopers"
-                         placeholder="Total Developers in Capability"
+                         placeholder={t('capability:capability.numOfDevelopers')}
                          value={numOfDevelopers}
                          onChange={onChange}
                          error={numOfDevelopersError}/>
                   <Input type="number"
                          name="numOfAvailableDevelopers"
-                         placeholder="Available developers for hire"
+                         placeholder={t('capability:capability.numOfAvailableDevelopers')}
                          value={numOfAvailableDevelopers}
                          onChange={onChange}
                          error={numOfAvailableDevelopersError}/>
@@ -91,7 +93,7 @@ const AddCapability = (props) => {
                       size="lg"
                       pendingApiCall={pendingApiCall}
                       disabled={pendingApiCall}>
-                      <FontAwesomeIcon icon={faSave} /> Save
+                      <FontAwesomeIcon icon={faSave} /> {t('global.entity.action.save')}
                   </ButtonWithProgress>
               </form>
           </Card.Body>

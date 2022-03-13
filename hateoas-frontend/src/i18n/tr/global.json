@@ -1,0 +1,20 @@
+{
+  "global": {
+    "menu": {
+      "home": "Anasayfa",
+      "language": {
+        "main": "Dil",
+        "en": "İngilizce",
+        "tr": "Türkçe"
+      }
+    },
+    "entity": {
+      "action": {
+        "cancel": "İptal",
+        "delete": "Sil",
+        "edit": "Düzenle",
+        "save": "Kaydet"
+      }
+    }
+  }
+}

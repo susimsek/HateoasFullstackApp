@@ -6,6 +6,7 @@ import { Modal } from 'react-bootstrap';
 import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
 import {closeModalClearState} from "../../actions/CapabilityActions";
+import { useTranslation } from 'react-i18next';
 
 const customStyles = {
     content: {
@@ -16,6 +17,7 @@ const customStyles = {
 const UpdateIcon = (props) => {
 
     const dispatch = useDispatch();
+    const { t } = useTranslation('capability');
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -40,7 +42,7 @@ const UpdateIcon = (props) => {
                    onHide={closeModal}
                    dialogClassName={customStyles}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Update Capability</Modal.Title>
+                    <Modal.Title>{t('capability:capability.home.editLabel')}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <UpdateCapability closeModal={closeModal} id={id} />
