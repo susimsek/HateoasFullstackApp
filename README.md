@@ -153,6 +153,7 @@ You can upgrade hateoas fullstack apps (if you have made any changes to the gene
 * Spring Native
 * GraalVM
 * Swagger
+* Internationalization(i18n)
 * React
 * Redux
 * H2
