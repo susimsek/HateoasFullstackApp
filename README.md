@@ -138,7 +138,7 @@ You can upgrade hateoas fullstack apps (if you have made any changes to the gene
 ./helm-upgrade.sh
 ```
 
-The Hateoas Fullstack application can be accessed with ingress from the link below.
+The Hateoas Fullstack application can be accessed with ingress from the link below.  
 http://hateoas-fullstack-ui.github.io
 
 # Used Technologies
