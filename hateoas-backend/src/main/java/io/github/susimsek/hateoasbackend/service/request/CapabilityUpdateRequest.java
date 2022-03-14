@@ -1,15 +1,16 @@
-package io.github.susimsek.hateoasbackend.request;
-
+package io.github.susimsek.hateoasbackend.service.request;
 
 import io.github.susimsek.hateoasbackend.validator.annotation.FieldsGreatness;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 
 @FieldsGreatness(firstFieldName = "numOfDevelopers",
         secondFieldName = "numOfAvailableDevelopers",
         message = "{error.constraints.FieldsGreatness.message}")
-public record CapabilityCreateRequest(
+public record CapabilityUpdateRequest(
         @Schema(description = "Name of the Technology Stack.", example = "JavaEE", required = true)
         @NotBlank(message = "{error.constraints.techStack.NotBlank.message}")
         @Size(min = 2, max = 255)
@@ -21,4 +22,4 @@ public record CapabilityCreateRequest(
 
         @Schema(description = "Num of the Available Developers.", example = "10", required = false)
         @PositiveOrZero
-        Integer numOfAvailableDevelopers) {}
+        Integer numOfAvailableDevelopers){}

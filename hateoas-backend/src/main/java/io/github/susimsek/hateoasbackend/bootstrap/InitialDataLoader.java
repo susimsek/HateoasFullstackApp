@@ -1,7 +1,7 @@
 package io.github.susimsek.hateoasbackend.bootstrap;
 
 import io.github.susimsek.hateoasbackend.domain.Capability;
-import io.github.susimsek.hateoasbackend.repositories.CapabilityRepository;
+import io.github.susimsek.hateoasbackend.repository.CapabilityRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

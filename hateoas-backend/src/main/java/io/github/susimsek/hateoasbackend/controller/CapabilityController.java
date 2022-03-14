@@ -1,10 +1,11 @@
 package io.github.susimsek.hateoasbackend.controller;
 
-import io.github.susimsek.hateoasbackend.assembler.CapabilityModelAssembler;
-import io.github.susimsek.hateoasbackend.dto.CapabilityDto;
-import io.github.susimsek.hateoasbackend.request.CapabilityCreateRequest;
-import io.github.susimsek.hateoasbackend.request.CapabilityUpdateRequest;
-import io.github.susimsek.hateoasbackend.services.CapabilityService;
+import io.github.susimsek.hateoasbackend.domain.Capability;
+import io.github.susimsek.hateoasbackend.controller.assembler.CapabilityModelAssembler;
+import io.github.susimsek.hateoasbackend.service.dto.CapabilityDto;
+import io.github.susimsek.hateoasbackend.service.request.CapabilityCreateRequest;
+import io.github.susimsek.hateoasbackend.service.request.CapabilityUpdateRequest;
+import io.github.susimsek.hateoasbackend.service.CapabilityService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -17,7 +18,6 @@ import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
@@ -38,7 +38,7 @@ import java.util.List;
 public class CapabilityController {
 
     final CapabilityService capabilityService;
-    final CapabilityModelAssembler assembler;
+    final CapabilityModelAssembler capabilityModelAssembler;
 
     @Operation(summary = "Add a new capability", description = "Add a new capability", tags = { "capability" })
     @ApiResponses(value = {
@@ -49,12 +49,12 @@ public class CapabilityController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<EntityModel<CapabilityDto>> newCapability(@Valid @RequestBody CapabilityCreateRequest capability) throws URISyntaxException {
-        CapabilityDto savedCapability = capabilityService.saveCapability(capability);
-        EntityModel<CapabilityDto> capabilityResource =  assembler.toModel(savedCapability);
+    public ResponseEntity<CapabilityDto> newCapability(@Valid @RequestBody CapabilityCreateRequest capability) throws URISyntaxException {
+        Capability entity = capabilityService.saveCapability(capability);
+        CapabilityDto resource = capabilityModelAssembler.toModel(entity);
         return ResponseEntity
-                .created(new URI(capabilityResource.getRequiredLink(IanaLinkRelations.SELF).getHref()))
-                .body(capabilityResource);
+                .created(new URI(resource.getRequiredLink(IanaLinkRelations.SELF).getHref()))
+                .body(resource);
     }
 
     @Operation(summary = "Find capability by ID", description = "Returns a single capability", tags = { "capability" })
@@ -63,9 +63,9 @@ public class CapabilityController {
             @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content),
             @ApiResponse(responseCode = "404", description = "Capability not found", content = @Content) })
     @GetMapping(path = "/capabilities/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<EntityModel<CapabilityDto>> getCapability(@PathVariable Long id) {
-        CapabilityDto capability = capabilityService.getCapability(id);
-        return ResponseEntity.ok(assembler.toModel(capability));
+    public ResponseEntity<CapabilityDto> getCapability(@PathVariable Long id) {
+        Capability entity = capabilityService.getCapability(id);
+        return ResponseEntity.ok(capabilityModelAssembler.toModel(entity));
     }
 
     @Operation(summary = "Get all Capabilities with Pagination", description = "Get all Capabilities with Pagination", tags = { "capability" })
@@ -74,10 +74,9 @@ public class CapabilityController {
     })
     @GetMapping(path = "/paged-capabilities",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PagedModel<EntityModel<CapabilityDto>>> getAllCapabilitiesWithPagination(@ParameterObject Pageable pageable) {
-
-        Page<CapabilityDto> capabilities = capabilityService.getAllCapabilitiesWithPagination(pageable);
-        return ResponseEntity.ok(assembler.toPagedModel(capabilities));
+    public ResponseEntity<PagedModel<CapabilityDto>> getAllCapabilitiesWithPagination(@ParameterObject Pageable pageable) {
+        Page<Capability> page = capabilityService.getAllCapabilitiesWithPagination(pageable);
+        return ResponseEntity.ok(capabilityModelAssembler.toPagedModel(page));
     }
 
     @Operation(summary = "Get all Capabilities", description = "Get all Capabilities", tags = { "capability" })
@@ -86,9 +85,9 @@ public class CapabilityController {
     })
     @GetMapping(path = "/capabilities",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CollectionModel<EntityModel<CapabilityDto>>> getAllCapabilities() {
-        List<CapabilityDto> capabilities = capabilityService.getAllCapabilities();
-        return ResponseEntity.ok(assembler.toCollectionModel(capabilities));
+    public ResponseEntity<CollectionModel<CapabilityDto>> getAllCapabilities() {
+        List<Capability> entities = capabilityService.getAllCapabilities();
+        return ResponseEntity.ok(capabilityModelAssembler.toCollectionModel(entities));
     }
 
     @Operation(summary = "Update an existing capability", description = "Update an existing capability by Id", tags = { "capability" })
@@ -99,10 +98,10 @@ public class CapabilityController {
     @PutMapping(path = "/capabilities/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<EntityModel<CapabilityDto>> updateCapability(@Valid @RequestBody CapabilityUpdateRequest capability,
+    public ResponseEntity<CapabilityDto> updateCapability(@Valid @RequestBody CapabilityUpdateRequest capability,
                                                                       @PathVariable long id) {
-        CapabilityDto updatedCapability = capabilityService.updateCapability(id, capability);
-        return ResponseEntity.ok(assembler.toModel(updatedCapability));
+        Capability entity = capabilityService.updateCapability(id, capability);
+        return ResponseEntity.ok(capabilityModelAssembler.toModel(entity));
     }
 
     @Operation(summary = "Delete a capability", description = "", tags = { "capability" })

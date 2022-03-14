@@ -1,4 +1,4 @@
-package io.github.susimsek.hateoasbackend.exceptions;
+package io.github.susimsek.hateoasbackend.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

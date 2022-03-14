@@ -1,4 +1,4 @@
-package io.github.susimsek.hateoasbackend.mapper;
+package io.github.susimsek.hateoasbackend.service.mapper;
 
 import java.util.List;
 

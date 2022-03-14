@@ -1,9 +1,9 @@
-package io.github.susimsek.hateoasbackend.mapper;
+package io.github.susimsek.hateoasbackend.service.mapper;
 
 import io.github.susimsek.hateoasbackend.domain.Capability;
-import io.github.susimsek.hateoasbackend.dto.CapabilityDto;
-import io.github.susimsek.hateoasbackend.request.CapabilityCreateRequest;
-import io.github.susimsek.hateoasbackend.request.CapabilityUpdateRequest;
+import io.github.susimsek.hateoasbackend.service.dto.CapabilityDto;
+import io.github.susimsek.hateoasbackend.service.request.CapabilityCreateRequest;
+import io.github.susimsek.hateoasbackend.service.request.CapabilityUpdateRequest;
 import org.mapstruct.*;
 
 @Mapper

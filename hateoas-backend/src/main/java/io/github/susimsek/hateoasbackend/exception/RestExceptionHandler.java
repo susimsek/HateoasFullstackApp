@@ -1,4 +1,4 @@
-package io.github.susimsek.hateoasbackend.exceptions;
+package io.github.susimsek.hateoasbackend.exception;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AccessLevel;
