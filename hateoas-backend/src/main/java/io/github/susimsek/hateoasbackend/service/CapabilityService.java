@@ -1,7 +1,7 @@
 package io.github.susimsek.hateoasbackend.service;
 
 import io.github.susimsek.hateoasbackend.domain.Capability;
-import io.github.susimsek.hateoasbackend.exception.CapabilityNotFoundException;
+import io.github.susimsek.hateoasbackend.exception.ResourceNotFoundException;
 import io.github.susimsek.hateoasbackend.repository.CapabilityRepository;
 import io.github.susimsek.hateoasbackend.service.mapper.CapabilityMapper;
 import io.github.susimsek.hateoasbackend.service.request.CapabilityCreateRequest;
@@ -14,6 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static io.github.susimsek.hateoasbackend.constant.ErrorCodeConstants.CAPABILITY_NOT_FOUND;
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -53,6 +55,7 @@ public class CapabilityService {
 
     Capability findById(Long id) {
         return capabilityRepository.findById(id)
-                .orElseThrow(() -> new CapabilityNotFoundException(String.format("Capability with ID: %d Not found", id)));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        CAPABILITY_NOT_FOUND, new Object[]{id}));
     }
 }
